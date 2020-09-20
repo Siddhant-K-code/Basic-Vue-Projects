@@ -1,0 +1,61 @@
+/* The slider itself */
+
+:root {
+  --height: 15px;
+}
+
+.slider {
+  margin: 0;
+  margin-bottom: 10px;
+  -webkit-appearance: none;  
+  appearance: none;
+  width: 100%;
+  height: var(--height); 
+  border-radius: var(--height);
+  background: #ccc; 
+  outline: none; 
+  /* opacity: 0.5; */
+  -webkit-transition: 0.4s;
+  transition: opacity 0.4s;
+  padding: 2px;
+  /* filter: drop-shadow(0 0 5px #707070); */
+  box-shadow: 0 3px 3px 0px #99999999;
+  border: none;
+}
+
+.slider.red {
+  /* background-color: #ff0000; */
+  background: linear-gradient(90deg, #fff, #ff0000);
+}
+
+.slider.green {
+  background: linear-gradient(90deg, #fff, #00ff00);
+}
+
+.slider.blue {
+  background: linear-gradient(90deg, #fff,#0000ff);
+}
+
+/* Mouse-over effects */
+.slider:hover {
+  /* opacity: 1; */
+  box-shadow: 0 4px 4px 0px #999999cc;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; 
+  appearance: none;
+  width: var(--height); 
+  height: var(--height);
+  cursor: pointer;
+  border-radius: 50%;
+  background-color: #000;
+}
+
+.slider::-moz-range-thumb  {
+  width: var(--height); 
+  height: var(--height);
+  cursor: pointer;
+  border-radius: 50%;
+  background-color: #000;
+}

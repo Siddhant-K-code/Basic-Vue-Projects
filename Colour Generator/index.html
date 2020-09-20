@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Vue Color Generator</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css2?family=Neucha&family=Numans&family=Caveat+Brush&family=Mali:wght@700&display=swap" rel="stylesheet">
+    <link href="/css/slider.css" rel="stylesheet" type="text/css" />
+    <link href="/css/style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div class="container">
+      <div id="app">
+
+        <colour-picker>
+          <template v-slot:rgbsliders="{red, green, blue}">
+            <colour-slider 
+              col="red" 
+              :val="red"
+            >
+            </colour-slider>
+            <colour-slider 
+              col="green" 
+              :val="green"
+            >
+            </colour-slider>
+            <colour-slider 
+              col="blue" 
+              :val="blue"
+            >
+            </colour-slider>
+          </template>
+        </colour-picker>
+      </div>
+    </div>
+
+    <template id="colour-slider-template">
+      <div class="m-0 m-b-20 width-200px">
+        <div class="m-b-5">{{col}}: {{vmodel}} </div>
+          <input 
+            v-model="vmodel"
+            class="slider"
+            :class="col"
+            type="range"
+            min="0" 
+            max="255" 
+            step="1"
+            @input="sendSliderValue"
+          >
+      </div>
+    </template>
+
+    <template id="colour-picker-template">
+
+      <article>
+
+        <h2>Color Generator</h2>
+
+          <div class="sliders-container">
+
+            <main>
+              <slot name="rgbsliders" :red="red" :green="green" :blue="blue"></slot>
+
+              <section class="m-b-10">
+                <input 
+                  :value="`#${hexColour(red, green, blue)}`"
+                  type="text"
+                  class="p-5 font-size-16px width-190px"
+                  :class="{'border-red':errorMessage}"
+                  @keyup.enter="updateSliders"
+                  placeholder="Enter a hex value"
+                >
+              </section>
+              <div class="font-size-14px m-b-20">
+                <a href="https://www.wikihow.com/Understand-Hexadecimal" target="_blank" class="color-red">
+                {{errorMessage}}</a>
+              </div>
+            </main>
+
+            <main class="sliders-buttons">
+
+              <section>
+                <h3 class="m-b-10">Click <i class="fas fa-plus"></i> to add or <i class="fas fa-times"></i> to remove</h3>
+
+                <div class="" style="float:left;">
+                  <label for="random" class="pointer"></label>
+                  <button class="font-size-16px m-b-20" @click="randomState = !randomState">Randomise: {{ randomState ? 'on' : 'off' }}</button>
+                  <input id="random" type="checkbox" v-model="randomState">
+                </div>
+                <button class="font-size-16px m-b-20" @click="clearAll">Clear all &times;</button>
+              </section>
+              
+              <section 
+                :style="getBgColour"
+                class="custom-colour add d-block m-b-20"
+                @click="addColour(red, green, blue)"
+                :title="`#${hexColour(red, green, blue)}`"
+              >
+              </section>
+
+              <section class="width-250px m-t-10 m-b-10">
+                <span 
+                  v-for="(colour, index) of coloursArray" 
+                  class="custom-colour delete d-inline-block"
+                  :style="{'background-color':`${colour.rgb}`}"
+                  @click="deleteColour(colour.id)"
+                  :title="`${colour.hex}`"
+                >
+                </span>
+              </section>
+            </main>
+          </div>
+
+
+        </article>
+
+      </template>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script src="/js/script.js"></script>
+
+  </body>
+</html>
