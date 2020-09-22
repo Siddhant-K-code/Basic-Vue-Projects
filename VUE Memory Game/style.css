@@ -1,0 +1,46 @@
+html {
+	 background: #222;
+	 user-select: none;
+}
+ html p {
+	 color: white;
+	 font-family: verdana;
+	 width: 100%;
+	 text-align: center;
+}
+ html ul {
+	 display: flex;
+	 margin: 1rem;
+	 flex-flow: wrap;
+	 width: 95%;
+	 height: 90vh;
+	 margin: 1rem auto;
+	 padding: 0;
+	 justify-content: space-around;
+}
+ html ul li {
+	 background: #333;
+	 box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.5);
+	 width: 10%;
+	 display: flex;
+	 justify-content: center;
+	 align-items: center;
+	 font-size: 2rem;
+	 width: 8%;
+	 height: 8%;
+	 margin: 1%;
+	 border-radius: 0.75rem;
+	 box-sizing: border-box;
+	 color: transparent;
+}
+ html ul .active {
+	 background: #555;
+	 pointer-events: none;
+	 color: unset;
+}
+ html ul .paired {
+	 background: #777;
+	 color: unset;
+	 pointer-events: none;
+}
+ 

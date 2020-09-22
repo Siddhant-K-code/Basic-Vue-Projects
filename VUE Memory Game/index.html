@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>VUE Memory Game</title>
+	<link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js">
+	</script>
+	<div id="app">
+		<p> pairs: {{pairs}} / 50</P>
+
+		<ul class="images">
+			<li v-for="image, i in images" v-bind:key="image + i" v-bind:class="image" v-on:click="select">{{image}}</li>
+		</ul>
+
+	</div>
+
+	<script src="script.js">
+	</script>
+</body>
+
+</html>
