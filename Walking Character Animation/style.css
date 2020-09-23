@@ -1,0 +1,83 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+body {
+  color: #fff;
+  background: #949c4e;
+  background: linear-gradient(
+    115deg,
+    rgba(86, 216, 228, 1) 10%,
+    rgba(159, 1, 234, 1) 90%
+  );
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+}
+
+html,
+body,
+.container {
+  min-height: 100vh;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+p, a {
+  color: #666;
+}
+
+button {
+  font-family: "Roboto Mono";
+  padding: 10px 15px;
+  border: none;
+  color: #FFF;
+  outline: 0;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.8);
+  box-shadow: rgba(0, 0, 0, 0.3) 0 3px 4px;
+}
+
+.container {
+  margin: 25px 50px;
+}
+
+.character {
+  width: 87px;
+  height: 174px;
+  background: url("https://raw.githubusercontent.com/netzzwerg/workshop-javascript/master/CSS3-animations/example05/character.png")
+    0 0 no-repeat;
+}
+
+.animate {
+  animation: walk 1s steps(12) infinite;
+}
+
+.transition-enter-active,
+.transition-leave-active {
+  transition: transform 12s linear;
+}
+.transition-enter,
+.transition-leave-to {
+  transform: translate3d(1044px, 0, 0);
+}
+
+@keyframes walk {
+  from {
+    background-position: 0px;
+  }
+  to {
+    background-position: -1044px;
+  }
+}

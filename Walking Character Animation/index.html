@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<link rel="icon" href="https://img.icons8.com/ultraviolet/40/000000/animation-rig.png" type="image/x-icon">
+	<title>Walking Character Animation</title>
+	<link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+	<div class="container">
+		<div id="app">
+			<transition name="transition">
+				<div v-if="show" :class="{ character: show, animate: walk }"></div>
+			</transition>
+			<button @click="walk = !walk">{{ walk ? 'stop' : 'animate' }}</button>
+    <button @click="show = !show">{{ show ? 'walk' : 'moon walk' }}</button>
+    <p>Developed by Siddhant Khare </p>
+  </div>
+</div>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.3/vue.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
