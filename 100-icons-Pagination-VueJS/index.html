@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>100 icons - Pagination</title>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+	<link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+	<div id="app" class="container">
+		<ul class="items-list">
+			<li v-for="item in displayedItems" class="item" v-html="item"></li>
+		</ul>
+
+		<ul class="page">
+			<li class="page__btn" :class="{'active' : (currentPage != 1)}" @click="currentPage--"><span class="material-icons">chevron_left</span></li>
+
+    <li class="page__numbers" @click="currentPage = 1" v-if="currentPage > 3"> {{pages[0]}}</li>
+    <li class="page__dots" v-if="currentPage > 3">...</li>
+
+    <li class="page__numbers" v-for="pageNumber in displayedPages" @click="currentPage = pageNumber" :class="{'active' : (currentPage === (pageNumber))}">{{pageNumber}}</li>
+
+    <li class="page__dots" v-if="currentPage < pages.length - 2">...</li>
+    <li class="page__numbers" @click="currentPage = pages.length" v-if="currentPage < pages.length - 2"> {{pages[pages.length - 1]}}</li>
+
+    <li class="page__btn" :class="{'active' : (currentPage < pages.length)}" @click="currentPage++"><span class="material-icons">chevron_right</span></li>
+  </ul>
+</div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
